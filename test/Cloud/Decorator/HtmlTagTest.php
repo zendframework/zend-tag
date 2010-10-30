@@ -17,19 +17,16 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id$
  */
 
 /**
  * @namespace
  */
 namespace ZendTest\Tag\Cloud\Decorator;
-use Zend\Tag\Cloud\Decorator;
-use Zend\Tag;
 
-if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Zend_Tag_Cloud_Decorator_HTMLTagTest::main');
-}
+use	Zend\Tag,
+    Zend\Tag\Cloud\Decorator,
+	Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException;
 
 /**
  * Test helper
@@ -45,7 +42,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class HTMLTagTest extends \PHPUnit_Framework_TestCase
+class HtmlTagTest extends \PHPUnit_Framework_TestCase
 {
     public static function main()
     {
@@ -55,7 +52,7 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testDefaultOutput()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
         $expected  = array('<li><a href="http://first" style="font-size: 10px;">foo</a></li>',
                            '<li><a href="http://second" style="font-size: 13px;">bar</a></li>',
                            '<li><a href="http://third" style="font-size: 20px;">baz</a></li>');
@@ -65,8 +62,8 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testNestedTags()
     {
-        $decorator = new Decorator\HTMLTag();
-        $decorator->setHTMLTags(array('span' => array('class' => 'tag'), 'li'));
+        $decorator = new Decorator\HtmlTag();
+        $decorator->setHtmlTags(array('span' => array('class' => 'tag'), 'li'));
         $expected  = array('<li><span class="tag"><a href="http://first" style="font-size: 10px;">foo</a></span></li>',
                            '<li><span class="tag"><a href="http://second" style="font-size: 13px;">bar</a></span></li>',
                            '<li><span class="tag"><a href="http://third" style="font-size: 20px;">baz</a></span></li>');
@@ -76,7 +73,7 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testFontSizeSpread()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
         $decorator->setFontSizeUnit('pt')
                   ->setMinFontSize(5)
                   ->setMaxFontSize(50);
@@ -90,7 +87,7 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testClassListSpread()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
         $decorator->setClassList(array('small', 'medium', 'large'));
 
         $expected  = array('<li><a href="http://first" class="small">foo</a></li>',
@@ -102,67 +99,67 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testEmptyClassList()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
 
         try {
             $decorator->setClassList(array());
-            $this->fail('An expected Zend_Tag_Cloud_Decorator_Exception was not raised');
-        } catch (Decorator\Exception $e) {
+            $this->fail('An expected Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException was not raised');
+        } catch (InvalidArgumentException $e) {
             $this->assertEquals($e->getMessage(), 'Classlist is empty');
         }
     }
 
     public function testInvalidClassList()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
 
         try {
             $decorator->setClassList(array(array()));
-            $this->fail('An expected Zend_Tag_Cloud_Decorator_Exception was not raised');
-        } catch (Decorator\Exception $e) {
+            $this->fail('An expected Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException was not raised');
+        } catch (InvalidArgumentException $e) {
             $this->assertEquals($e->getMessage(), 'Classlist contains an invalid classname');
         }
     }
 
     public function testInvalidFontSizeUnit()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
 
         try {
             $decorator->setFontSizeUnit('foo');
-            $this->fail('An expected Zend_Tag_Cloud_Decorator_Exception was not raised');
-        } catch (Decorator\Exception $e) {
+            $this->fail('An expected Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException was not raised');
+        } catch (InvalidArgumentException $e) {
             $this->assertEquals($e->getMessage(), 'Invalid fontsize unit specified');
         }
     }
 
     public function testInvalidMinFontSize()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
 
         try {
             $decorator->setMinFontSize('foo');
-            $this->fail('An expected Zend_Tag_Cloud_Decorator_Exception was not raised');
-        } catch (Decorator\Exception $e) {
+            $this->fail('An expected Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException was not raised');
+        } catch (InvalidArgumentException $e) {
             $this->assertEquals($e->getMessage(), 'Fontsize must be numeric');
         }
     }
 
     public function testInvalidMaxFontSize()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
 
         try {
             $decorator->setMaxFontSize('foo');
-            $this->fail('An expected Zend_Tag_Cloud_Decorator_Exception was not raised');
-        } catch (Decorator\Exception $e) {
+            $this->fail('An expected Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException was not raised');
+        } catch (InvalidArgumentException $e) {
             $this->assertEquals($e->getMessage(), 'Fontsize must be numeric');
         }
     }
 
     public function testConstructorWithArray()
     {
-        $decorator = new Decorator\HTMLTag(array('minFontSize' => 5, 'maxFontSize' => 10, 'fontSizeUnit' => 'pt'));
+        $decorator = new Decorator\HtmlTag(array('minFontSize' => 5, 'maxFontSize' => 10, 'fontSizeUnit' => 'pt'));
 
         $this->assertEquals(5, $decorator->getMinFontSize());
         $this->assertEquals(10, $decorator->getMaxFontSize());
@@ -171,7 +168,7 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructorWithConfig()
     {
-        $decorator = new Decorator\HTMLTag(new \Zend\Config\Config(array('minFontSize' => 5, 'maxFontSize' => 10, 'fontSizeUnit' => 'pt')));
+        $decorator = new Decorator\HtmlTag(new \Zend\Config\Config(array('minFontSize' => 5, 'maxFontSize' => 10, 'fontSizeUnit' => 'pt')));
 
         $this->assertEquals(5, $decorator->getMinFontSize());
         $this->assertEquals(10, $decorator->getMaxFontSize());
@@ -180,7 +177,7 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testSetOptions()
     {
-        $decorator = new Decorator\HTMLTag();
+        $decorator = new Decorator\HtmlTag();
         $decorator->setOptions(array('minFontSize' => 5, 'maxFontSize' => 10, 'fontSizeUnit' => 'pt'));
 
         $this->assertEquals(5, $decorator->getMinFontSize());
@@ -190,7 +187,7 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
 
     public function testSkipOptions()
     {
-        $decorator = new Decorator\HTMLTag(array('options' => 'foobar'));
+        $decorator = new Decorator\HtmlTag(array('options' => 'foobar'));
         // In case would fail due to an error
     }
 
@@ -205,6 +202,3 @@ class HTMLTagTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Zend_Tag_Cloud_Decorator_HTMLTagTest::main') {
-    \Zend_Tag_Cloud_Decorator_HTMLTagTest::main();
-}
