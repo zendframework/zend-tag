@@ -14,34 +14,48 @@
  *
  * @category   Zend
  * @package    Zend_Tag
- * @subpackage Cloud
+ * @subpackage Item
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Zend\Tag\Cloud;
-
-use Zend\Loader\PluginClassLoader;
+namespace Zend\Tag;
 
 /**
- * Plugin Class Loader implementation for decorators.
- *
  * @category   Zend
  * @package    Zend_Tag
- * @subpackage Cloud
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class DecoratorLoader extends PluginClassLoader
+interface TaggableInterface
 {
     /**
-     * @var array Pre-aliased decorators 
+     * Get the title of the tag
+     *
+     * @return string
      */
-    protected $plugins = array(
-        'html_cloud' => 'Zend\Tag\Cloud\Decorator\HtmlCloud',
-        'htmlcloud'  => 'Zend\Tag\Cloud\Decorator\HtmlCloud',
-        'html_tag'   => 'Zend\Tag\Cloud\Decorator\HtmlTag',
-        'htmltag'    => 'Zend\Tag\Cloud\Decorator\HtmlTag',
-        'tag'        => 'Zend\Tag\Cloud\Decorator\Tag',
-    );
+    public function getTitle();
+
+    /**
+     * Get the weight of the tag
+     *
+     * @return float
+     */
+    public function getWeight();
+
+    /**
+     * Set a parameter
+     *
+     * @param string $name
+     * @param string $value
+     */
+    public function setParam($name, $value);
+
+    /**
+     * Get a parameter
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function getParam($name);
 }

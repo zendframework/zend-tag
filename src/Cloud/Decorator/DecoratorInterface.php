@@ -19,12 +19,10 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Zend\Tag\Cloud;
-
-use Zend\Loader\PluginBroker;
+namespace Zend\Tag\Cloud\Decorator;
 
 /**
- * Broker for decorator instances
+ * Interface for decorators
  *
  * @category   Zend
  * @package    Zend_Tag
@@ -32,25 +30,23 @@ use Zend\Loader\PluginBroker;
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class DecoratorBroker extends PluginBroker
+interface DecoratorInterface
 {
     /**
-     * @var string Default plugin loading strategy
+     * Constructor
+     *
+     * Allow passing options to the constructor.
+     * 
+     * @param  mixed $options 
+     * @return void
      */
-    protected $defaultClassLoader = 'Zend\Tag\Cloud\DecoratorLoader';
+    public function __construct($options = null);
 
     /**
-     * Determine if we have a valid decorator
+     * Render a list of tags
      * 
-     * @param  mixed $plugin 
-     * @return true
-     * @throws Exception
+     * @param  mixed $tags 
+     * @return string
      */
-    protected function validatePlugin($plugin)
-    {
-        if (!$plugin instanceof Decorator) {
-            throw new Exception('Tag cloud decorators must implement Zend\Tag\Cloud\Decorator');
-        }
-        return true;
-    }
+    public function render($tags);
 }
