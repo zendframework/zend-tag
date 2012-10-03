@@ -9,7 +9,7 @@
     "homepage": "https://github.com/zendframework/zend-tag",
     "autoload": {
         "psr-4": {
-            "Zend\\Tag": "src/"
+            "Zend\\Tag\\": "src/"
         }
     },
     "require": {
