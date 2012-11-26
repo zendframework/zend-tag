@@ -10,7 +10,7 @@
 
 namespace Zend\Tag\Exception;
 
-class OutOfBoundsException
-    extends \OutOfBoundsException
-    implements ExceptionInterface
+use DomainException;
+
+class InvalidAttributeNameException extends DomainException implements ExceptionInterface
 {}
