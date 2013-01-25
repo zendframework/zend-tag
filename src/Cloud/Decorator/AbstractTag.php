@@ -8,24 +8,14 @@
  * @package   Zend_Tag
  */
 
-namespace ZendTest\Tag\Cloud\TestAsset;
+namespace Zend\Tag\Cloud\Decorator;
 
 /**
- * @category   Zend
- * @package    Zend_Tag
- * @subpackage UnitTests
+ * Abstract class for tag decorators
+ *
+ * @category  Zend
+ * @package   Zend_Tag
  */
-class CloudDummy2 extends \Zend\Tag\Cloud\Decorator\HtmlCloud
+abstract class AbstractTag extends AbstractDecorator
 {
-    protected $_foo;
-
-    public function setFoo($value)
-    {
-        $this->_foo = $value;
-    }
-
-    public function getFoo()
-    {
-        return $this->_foo;
-    }
 }

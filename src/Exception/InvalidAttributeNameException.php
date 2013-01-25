@@ -8,15 +8,9 @@
  * @package   Zend_Tag
  */
 
-namespace Zend\Tag\Cloud\Decorator\Exception;
+namespace Zend\Tag\Exception;
 
-use Zend\Tag\Exception\ExceptionInterface as Exception;
+use DomainException;
 
-/**
- * Exception class for Zend_Tag_Cloud_Decorator
- *
- * @category  Zend
- * @package   Zend_Tag
- */
-interface ExceptionInterface extends Exception
+class InvalidAttributeNameException extends DomainException implements ExceptionInterface
 {}
