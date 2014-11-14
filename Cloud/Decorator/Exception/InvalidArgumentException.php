@@ -14,5 +14,4 @@ use Zend\Tag\Exception;
 class InvalidArgumentException
     extends Exception\InvalidArgumentException
     implements ExceptionInterface
-{
-}
+{}
