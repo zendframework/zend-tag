@@ -1,5 +1,8 @@
 # zend-tag
 
+[![Build Status](https://secure.travis-ci.org/zendframework/zend-tag.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-tag)
+[![Coverage Status](https://coveralls.io/repos/zendframework/zend-tag/badge.svg?branch=master)](https://coveralls.io/r/zendframework/zend-tag)
+
 `Zend\Tag` is a component suite which provides a facility to work with taggable
 Items. As its base, it provides two classes to work with Tags, `Zend\Tag\Item`
 and `Zend\Tag\ItemList`. Additionally, it comes with the interface
