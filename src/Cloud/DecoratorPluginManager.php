@@ -10,7 +10,7 @@
 namespace Zend\Tag\Cloud;
 
 use Zend\ServiceManager\AbstractPluginManager;
-use Zend\Tag\Exception;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Plugin manager implementation for decorators.
@@ -21,38 +21,16 @@ use Zend\Tag\Exception;
  */
 class DecoratorPluginManager extends AbstractPluginManager
 {
-    /**
-     * Default set of decorators
-     *
-     * @var array
-     */
-    protected $invokableClasses = [
-        'htmlcloud' => 'Zend\Tag\Cloud\Decorator\HtmlCloud',
-        'htmltag'   => 'Zend\Tag\Cloud\Decorator\HtmlTag',
-        'tag'       => 'Zend\Tag\Cloud\Decorator\HtmlTag',
+    protected $aliases = [
+        'htmlcloud' => Decorator\HtmlCloud::class,
+        'htmltag'   => Decorator\HtmlTag::class,
+        'tag'       => Decorator\HtmlTag::class,
     ];
 
-    /**
-     * Validate the plugin
-     *
-     * Checks that the decorator loaded is an instance
-     * of Decorator\DecoratorInterface.
-     *
-     * @param  mixed $plugin
-     * @return void
-     * @throws Exception\InvalidArgumentException if invalid
-     */
-    public function validatePlugin($plugin)
-    {
-        if ($plugin instanceof Decorator\DecoratorInterface) {
-            // we're okay
-            return;
-        }
+    protected $factories = [
+        Decorator\HtmlCloud::class => InvokableFactory::class,
+        Decorator\HtmlTag::class   => InvokableFactory::class,
+    ];
 
-        throw new Exception\InvalidArgumentException(sprintf(
-            'Plugin of type %s is invalid; must implement %s\Decorator\DecoratorInterface',
-            (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
-            __NAMESPACE__
-        ));
-    }
+    protected $instanceOf = Decorator\DecoratorInterface::class;
 }
