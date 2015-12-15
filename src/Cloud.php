@@ -10,7 +10,10 @@
 namespace Zend\Tag;
 
 use Traversable;
+use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
+use Zend\Tag\Cloud\Decorator\HtmlCloud;
+use Zend\Tag\Cloud\Decorator\HtmlTag;
 
 class Cloud
 {
@@ -208,7 +211,7 @@ class Cloud
     public function getCloudDecorator()
     {
         if (null === $this->cloudDecorator) {
-            $this->setCloudDecorator('htmlCloud');
+            $this->setCloudDecorator(HtmlCloud::class);
         }
         return $this->cloudDecorator;
     }
@@ -255,7 +258,7 @@ class Cloud
     public function getTagDecorator()
     {
         if (null === $this->tagDecorator) {
-            $this->setTagDecorator('htmlTag');
+            $this->setTagDecorator(HtmlTag::class);
         }
         return $this->tagDecorator;
     }
@@ -280,7 +283,7 @@ class Cloud
     public function getDecoratorPluginManager()
     {
         if ($this->decorators === null) {
-            $this->decorators = new Cloud\DecoratorPluginManager();
+            $this->decorators = new Cloud\DecoratorPluginManager(new ServiceManager());
         }
 
         return $this->decorators;
