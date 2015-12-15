@@ -23,8 +23,15 @@ class DecoratorPluginManager extends AbstractPluginManager
 {
     protected $aliases = [
         'htmlcloud' => Decorator\HtmlCloud::class,
+        'htmlCloud' => Decorator\HtmlCloud::class,
+        'Htmlcloud' => Decorator\HtmlCloud::class,
+        'HtmlCloud' => Decorator\HtmlCloud::class,
         'htmltag'   => Decorator\HtmlTag::class,
+        'htmlTag'   => Decorator\HtmlTag::class,
+        'Htmltag'   => Decorator\HtmlTag::class,
+        'HtmlTag'   => Decorator\HtmlTag::class,
         'tag'       => Decorator\HtmlTag::class,
+        'Tag'       => Decorator\HtmlTag::class,
     ];
 
     protected $factories = [
