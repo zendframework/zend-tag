@@ -10,7 +10,6 @@
 namespace Zend\Tag\Cloud;
 
 use Zend\ServiceManager\AbstractPluginManager;
-use Zend\ServiceManager\Exception\InvalidServiceException;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
@@ -33,20 +32,5 @@ class DecoratorPluginManager extends AbstractPluginManager
         Decorator\HtmlTag::class   => InvokableFactory::class,
     ];
 
-    /**
-     * {@inheritdoc}
-     */
-    public function validatePlugin($plugin)
-    {
-        if ($plugin instanceof Decorator\DecoratorInterface) {
-            // we're okay
-            return;
-        }
-
-        throw new InvalidServiceException(sprintf(
-            'Plugin of type %s is invalid; must implement %s\Decorator\DecoratorInterface',
-            (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
-            __NAMESPACE__
-        ));
-    }
+    protected $instanceOf = Decorator\DecoratorInterface::class;
 }
