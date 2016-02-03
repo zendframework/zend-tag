@@ -9,6 +9,7 @@
 
 namespace Zend\Tag\Cloud;
 
+use RuntimeException;
 use Zend\ServiceManager\AbstractPluginManager;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Zend\ServiceManager\Exception\InvalidServiceException;
@@ -38,6 +39,11 @@ class DecoratorPluginManager extends AbstractPluginManager
     protected $factories = [
         Decorator\HtmlCloud::class => InvokableFactory::class,
         Decorator\HtmlTag::class   => InvokableFactory::class,
+        // Legacy (v2) due to alias resolution; canonical form of resolved
+        // alias is used to look up the factory, while the non-normalized
+        // resolved alias is used as the requested name passed to the factory.
+        'zendtagclouddecoratorhtmlcloud' => InvokableFactory::class,
+        'zendtagclouddecoratorhtmltag'   => InvokableFactory::class
     ];
 
     protected $instanceOf = Decorator\DecoratorInterface::class;
@@ -70,8 +76,12 @@ class DecoratorPluginManager extends AbstractPluginManager
      * @param mixed $instance
      * @throws InvalidServiceException
      */
-    public function validatePlugin($instance)
-    {
-        $this->validate($instance);
-    }
+     public function validatePlugin($instance)
+     {
+         try {
+             $this->validate($instance);
+         } catch (InvalidServiceException $e) {
+             throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
+         }
+     }
 }
