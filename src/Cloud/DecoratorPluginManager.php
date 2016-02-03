@@ -9,8 +9,10 @@
 
 namespace Zend\Tag\Cloud;
 
+use RuntimeException;
 use Zend\ServiceManager\AbstractPluginManager;
-use Zend\Tag\Exception;
+use Zend\ServiceManager\Factory\InvokableFactory;
+use Zend\ServiceManager\Exception\InvalidServiceException;
 
 /**
  * Plugin manager implementation for decorators.
@@ -21,38 +23,65 @@ use Zend\Tag\Exception;
  */
 class DecoratorPluginManager extends AbstractPluginManager
 {
-    /**
-     * Default set of decorators
-     *
-     * @var array
-     */
-    protected $invokableClasses = [
-        'htmlcloud' => 'Zend\Tag\Cloud\Decorator\HtmlCloud',
-        'htmltag'   => 'Zend\Tag\Cloud\Decorator\HtmlTag',
-        'tag'       => 'Zend\Tag\Cloud\Decorator\HtmlTag',
+    protected $aliases = [
+        'htmlcloud' => Decorator\HtmlCloud::class,
+        'htmlCloud' => Decorator\HtmlCloud::class,
+        'Htmlcloud' => Decorator\HtmlCloud::class,
+        'HtmlCloud' => Decorator\HtmlCloud::class,
+        'htmltag'   => Decorator\HtmlTag::class,
+        'htmlTag'   => Decorator\HtmlTag::class,
+        'Htmltag'   => Decorator\HtmlTag::class,
+        'HtmlTag'   => Decorator\HtmlTag::class,
+        'tag'       => Decorator\HtmlTag::class,
+        'Tag'       => Decorator\HtmlTag::class,
     ];
 
-    /**
-     * Validate the plugin
-     *
-     * Checks that the decorator loaded is an instance
-     * of Decorator\DecoratorInterface.
-     *
-     * @param  mixed $plugin
-     * @return void
-     * @throws Exception\InvalidArgumentException if invalid
-     */
-    public function validatePlugin($plugin)
-    {
-        if ($plugin instanceof Decorator\DecoratorInterface) {
-            // we're okay
-            return;
-        }
+    protected $factories = [
+        Decorator\HtmlCloud::class => InvokableFactory::class,
+        Decorator\HtmlTag::class   => InvokableFactory::class,
+        // Legacy (v2) due to alias resolution; canonical form of resolved
+        // alias is used to look up the factory, while the non-normalized
+        // resolved alias is used as the requested name passed to the factory.
+        'zendtagclouddecoratorhtmlcloud' => InvokableFactory::class,
+        'zendtagclouddecoratorhtmltag'   => InvokableFactory::class
+    ];
 
-        throw new Exception\InvalidArgumentException(sprintf(
-            'Plugin of type %s is invalid; must implement %s\Decorator\DecoratorInterface',
-            (is_object($plugin) ? get_class($plugin) : gettype($plugin)),
-            __NAMESPACE__
-        ));
+    protected $instanceOf = Decorator\DecoratorInterface::class;
+
+    /**
+     * Validate the plugin is of the expected type (v3).
+     *
+     * Validates against `$instanceOf`.
+     *
+     * @param mixed $instance
+     * @throws InvalidServiceException
+     */
+    public function validate($instance)
+    {
+        if (! $instance instanceof $this->instanceOf) {
+            throw new InvalidServiceException(sprintf(
+                '%s can only create instances of %s; %s is invalid',
+                get_class($this),
+                $this->instanceOf,
+                (is_object($instance) ? get_class($instance) : gettype($instance))
+            ));
+        }
     }
+
+    /**
+     * Validate the plugin is of the expected type (v2).
+     *
+     * Proxies to `validate()`.
+     *
+     * @param mixed $instance
+     * @throws InvalidServiceException
+     */
+     public function validatePlugin($instance)
+     {
+         try {
+             $this->validate($instance);
+         } catch (InvalidServiceException $e) {
+             throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
+         }
+     }
 }

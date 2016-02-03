@@ -1,8 +1,0 @@
-{
-    "title": "Zend\\Tag",
-    "target": "html/",
-    "content": [
-        "book/zend.tag.introduction.md",
-        "book/zend.tag.cloud.md"
-    ]
-}

@@ -11,4 +11,4 @@ taggable item in conjunction with `Zend\Tag`.
 
 
 - File issues at https://github.com/zendframework/zend-tag/issues
-- Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-tag
+- Documentation is at https://zendframework.github.io/zend-tag/
