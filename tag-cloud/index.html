@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Tag Clouds - zend-tag</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-tag</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../quick-start/">Quick Start</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Tag Clouds</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="prev" href="../quick-start/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="next" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-tag">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#creating-tag-clouds">Creating tag clouds</a></li>
+        
+            <li><a href="#using-zend92tag92cloud">Using Zend\Tag\Cloud</a></li>
+        
+            <li><a href="#decorators">Decorators</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">Docs</a> &raquo;</li>
+  
+    
+  
+  <li class="active">Tag Clouds</li>
+</ol>
+
+<nav class="hidden-lg">
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../quick-start/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next disabled ">
+      <a rel="next" >Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+
+<h1 id="creating-tag-clouds">Creating tag clouds</h1>
+<p><code>Zend\Tag\Cloud</code> is the rendering aspect of zend-tag. By default, it comes with
+a set of HTML decorators, allowing you to create tag clouds for a website. It
+also supplies you with two abstract classes to create your own decorators; one
+use case might be to create tag clouds in PDF documents.</p>
+<p>You can instantiate and configure <code>Zend\Tag\Cloud</code> either programmatically or
+via a configuration sturcture (either an array or an instance of <code>Traversable</code>).</p>
+<p>The following options are available:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cloudDecorator</code></td>
+<td>Defines the decorator for the cloud. Can either be the name of the class which should be loaded by the plugin manager, an instance of <code>Zend\Tag\Cloud\Decorator\AbstractCloud</code> or an array containing the decorator under the key decorator and optionally an array under the key options, which will be passed to the decorator’s constructor.</td>
+</tr>
+<tr>
+<td><code>tagDecorator</code></td>
+<td>Defines the decorator for individual tags. This can either be the name of the class which should be loaded by the plugin manager, an instance of <code>Zend\Tag\Cloud\Decorator\AbstractTag</code> or an array containing the decorator under the key decorator and optionally an array under the key options, which will be passed to the decorator’s constructor.</td>
+</tr>
+<tr>
+<td><code>decoratorPluginManager</code></td>
+<td>A different plugin manager to use. Must be an instance of <code>Zend\ServiceManager\AbstractPluginManager</code>.</td>
+</tr>
+<tr>
+<td><code>itemList</code></td>
+<td>A different item list to use. Must be an instance of <code>Zend\Tag\ItemList</code>.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Array of tags to assign to the cloud. Each tag must either implement <code>Zend\Tag\TaggableInterface</code> or be an array which can be used to instantiate <code>Zend\Tag\Item</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="using-zend92tag92cloud">Using Zend\Tag\Cloud</h2>
+<p>This example illustrates a basic example of how to create a tag cloud, add
+multiple tags to it, and finally render it.</p>
+<pre class="codehilite"><code class="language-php">// Create the cloud and assign static tags to it
+$cloud = new Zend\Tag\Cloud([
+    'tags' =&gt; [
+        [
+            'title'  =&gt; 'Code',
+            'weight' =&gt; 50,
+            'params' =&gt; ['url' =&gt; '/tag/code'],
+        ],
+        [
+            'title'  =&gt; 'Zend Framework',
+            'weight' =&gt; 1,
+            'params' =&gt; ['url' =&gt; '/tag/zend-framework'],
+        ],
+        [
+            'title' =&gt; 'PHP',
+            'weight' =&gt; 5,
+            'params' =&gt; ['url' =&gt; '/tag/php'],
+        ],
+    ],
+]);
+
+// Render the cloud
+echo $cloud;</code></pre>
+
+
+<p>This will output the tag cloud with the three tags, spread with the default
+font-sizes:</p>
+<pre class="codehilite"><code class="language-php">&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/tag/code&quot; style=&quot;font-size: 20px;&quot;&gt;
+            Code
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 10px;&quot;&gt;
+            Zend Framework
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 11px;&quot;&gt;
+            PHP
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<blockquote>
+<h3 id="formatting">Formatting</h3>
+<p>The HTML code examples are preformatted for a better visualization in the
+documentation.  You can define a output separator for the <a href="#html-cloud-decorator">HTML cloud
+decorator</a>.</p>
+</blockquote>
+<p>The following example shows how create the <strong>same</strong> tag cloud from a <code>Zend\Config\Config</code> object.</p>
+<pre class="codehilite"><code class="language-ini">; An example tags.ini file
+tags.1.title = &quot;Code&quot;
+tags.1.weight = 50
+tags.1.params.url = &quot;/tag/code&quot;
+tags.2.title = &quot;Zend Framework&quot;
+tags.2.weight = 1
+tags.2.params.url = &quot;/tag/zend-framework&quot;
+tags.3.title = &quot;PHP&quot;
+tags.3.weight = 2
+tags.3.params.url = &quot;/tag/php&quot;</code></pre>
+
+
+<pre class="codehilite"><code class="language-php">// Create the cloud from a Zend\Config\Config object
+$config = Zend\Config\Factory::fromFile('tags.ini');
+$cloud = new Zend\Tag\Cloud($config);
+
+// Render the cloud
+echo $cloud;</code></pre>
+
+
+<h2 id="decorators">Decorators</h2>
+<p><code>Zend\Tag\Cloud</code> requires two types of decorators to be able to render a tag cloud:</p>
+<ul>
+<li>A decorator for rendering an individual tag.</li>
+<li>A decorator for rendering the surrounding cloud.</li>
+</ul>
+<p><code>Zend\Tag\Cloud</code> ships a default decorator set for formatting a tag cloud in
+HTML. This set will, by default, create a tag cloud as a <code>&lt;ul&gt;/&lt;li&gt;</code> list,
+spread with different font-sizes according to the weight values of the tags
+assigned to them.</p>
+<h3 id="html-tag-decorator">HTML Tag decorator</h3>
+<p>The HTML tag decorator will by default render every tag in an anchor element, surrounded by a
+<code>&lt;li&gt;</code> element. The anchor itself is fixed and cannot be changed, but the surrounding element(s)
+can.</p>
+<blockquote>
+<h4 id="url-parameter">URL parameter</h4>
+<p>As the HTML tag decorator always surounds the tag title with an anchor, you
+should define a URL parameter for every tag used in it.</p>
+</blockquote>
+<p>The tag decorator can either spread different font-sizes over the anchors or a
+defined list of classnames. When setting options for one of those possibilities,
+the corresponding one will automatically be enabled.</p>
+<p>The following configuration options are available:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fontSizeUnit</code></td>
+<td><code>px</code></td>
+<td>Defines the font-size unit used for all font-sizes. The possible values are: em, ex, px, in, cm, mm, pt, pc and %.</td>
+</tr>
+<tr>
+<td><code>minFontSize</code></td>
+<td><code>10</code></td>
+<td>The minimum font-size distributed through the tags (must be numeric).</td>
+</tr>
+<tr>
+<td><code>maxFontSize</code></td>
+<td><code>20</code></td>
+<td>The maximum font-size distributed through the tags (must be numeric).</td>
+</tr>
+<tr>
+<td><code>classList</code></td>
+<td><code>null</code></td>
+<td>An array of classes distributed through the tags.</td>
+</tr>
+<tr>
+<td><code>htmlTags</code></td>
+<td><code>array('li')</code></td>
+<td>An array of HTML tags surrounding the anchor. Each element can either be a string, which is used as element type, or an array containing an attribute list for the element, defined as key/value pair. In this case, the array key is used as element type.</td>
+</tr>
+</tbody>
+</table>
+<p>The following example shows how to create a tag cloud with a customized HTML tag decorator.</p>
+<pre class="codehilite"><code class="language-php">$cloud = new Zend\Tag\Cloud([
+    'tagDecorator' =&gt; [
+        'decorator' =&gt; 'htmltag',
+        'options'   =&gt; [
+            'minFontSize' =&gt; '20',
+            'maxFontSize' =&gt; '50',
+            'htmlTags'    =&gt; [
+                'li' =&gt; ['class' =&gt; 'my_custom_class'],
+            ],
+        ],
+    ],
+    'tags' =&gt; [
+       [
+           'title'  =&gt; 'Code',
+           'weight' =&gt; 50,
+           'params' =&gt; ['url' =&gt; '/tag/code'],
+       ],
+       [
+           'title'  =&gt; 'Zend Framework',
+           'weight' =&gt; 1,
+           'params' =&gt; ['url' =&gt; '/tag/zend-framework'],
+       ],
+       [
+           'title'  =&gt; 'PHP',
+           'weight' =&gt; 5,
+           'params' =&gt; ['url' =&gt; '/tag/php']
+       ],
+   ],
+]);
+
+// Render the cloud
+echo $cloud;</code></pre>
+
+
+<p>The output:</p>
+<pre class="codehilite"><code class="language-php">&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
+    &lt;li class=&quot;my_custom_class&quot;&gt;
+        &lt;a href=&quot;/tag/code&quot; style=&quot;font-size: 50px;&quot;&gt;Code&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;my_custom_class&quot;&gt;
+        &lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 20px;&quot;&gt;Zend Framework&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;my_custom_class&quot;&gt;
+        &lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 23px;&quot;&gt;PHP&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h3 id="html-cloud-decorator">HTML Cloud decorator</h3>
+<p>By default, the HTML cloud decorator will surround the HTML tags with a <code>&lt;ul&gt;</code>
+element and add no separation. Like the tag decorator, you can define multiple
+surrounding HTML tags and additionally define a separator. The available options
+are:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>separator</code></td>
+<td><code>' '</code> (a whitespace)</td>
+<td>Defines the separator which is placed between all tags.</td>
+</tr>
+<tr>
+<td><code>htmlTags</code></td>
+<td><code>array('ul' =&gt; array('class' =&gt; 'zend-tag-cloud'))</code></td>
+<td>An array of HTML tags surrounding all tags. Each element can either be a string, which is used as element type, or an array containing an attribute list for the element, defined as key/value pair. In this case, the array key is used as element type.</td>
+</tr>
+</tbody>
+</table>
+<pre class="codehilite"><code class="language-php">// Create the cloud and assign static tags to it
+$cloud = new Zend\Tag\Cloud([
+    'cloudDecorator' =&gt; [
+        'decorator' =&gt; 'htmlcloud',
+        'options'   =&gt; [
+            'separator' =&gt; &quot;\n\n&quot;,
+            'htmlTags'  =&gt; [
+                'ul' =&gt; [
+                    'class' =&gt; 'my_custom_class',
+                    'id'    =&gt; 'tag-cloud',
+                ],
+            ],
+        ],
+    ],
+    'tags' =&gt; [
+        array(
+            'title'  =&gt; 'Code',
+            'weight' =&gt; 50,
+            'params' =&gt; ['url' =&gt; '/tag/code'],
+        ],
+        [
+            'title'  =&gt; 'Zend Framework',
+            'weight' =&gt; 1,
+            'params' =&gt; ['url' =&gt; '/tag/zend-framework'],
+        ],
+        [
+            'title' =&gt; 'PHP',
+            'weight' =&gt; 5,
+            'params' =&gt; ['url' =&gt; '/tag/php'],
+        ],
+    ],
+]);
+
+// Render the cloud
+echo $cloud;</code></pre>
+
+
+<p>The ouput:</p>
+<pre class="codehilite"><code class="language-php">&lt;ul class=&quot;my_custom_class&quot; id=&quot;tag-cloud&quot;&gt;&lt;li&gt;&lt;a href=&quot;/tag/code&quot; style=&quot;font-size:
+20px;&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 10px;&quot;&gt;Zend Framework&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 11px;&quot;&gt;PHP&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</code></pre>
+
+<hr />
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../quick-start/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next disabled ">
+      <a rel="next" >Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav></div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
