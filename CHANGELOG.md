@@ -6,7 +6,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#11](https://github.com/zendframework/zend-tag/pull/11) adds documentation
+  and publishes it to https://zendframework.github.io/zend-tag/
 
 ### Deprecated
 
