@@ -11,6 +11,7 @@ namespace ZendTest\Tag\Cloud;
 
 use stdClass;
 use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\Config as SMConfig;
 use Zend\Tag;
 use Zend\Tag\Cloud;
 use Zend\Tag\Cloud\Decorator\HtmlCloud;
@@ -320,12 +321,21 @@ class CloudTest extends \PHPUnit_Framework_TestCase
 
         if ($setDecoratorPluginManager) {
             $decorators = $cloud->getDecoratorPluginManager();
+            /*
             $decorators->configure([
                 'invokables' => [
                     'CloudDummy' => CloudDummy::class,
                     'TagDummy'   => TagDummy::class
                 ]
             ]);
+            */
+            $smConfig = new SMConfig([
+              'invokables' => [
+                  'CloudDummy' => CloudDummy::class,
+                  'TagDummy'   => TagDummy::class
+              ]
+            ]);
+            $smConfig->configureServiceManager($decorators);
         }
 
         return $cloud;
