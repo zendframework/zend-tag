@@ -9,6 +9,7 @@
 
 namespace ZendTest\Tag;
 
+use ArrayObject;
 use Zend\Tag;
 
 /**
@@ -108,9 +109,14 @@ class ItemTest extends \PHPUnit_Framework_TestCase
         $tag = new Tag\Item(['title' => 'foo']);
     }
 
+    /**
+     * This test uses ArrayObject, which will have essentially the
+     * same behavior as Zend\Config\Config; the code is looking only
+     * for a Traversable.
+     */
     public function testConfigOptions()
     {
-        $tag = new Tag\Item(new \Zend\Config\Config(['title' => 'foo', 'weight' => 1]));
+        $tag = new Tag\Item(new ArrayObject(['title' => 'foo', 'weight' => 1]));
 
         $this->assertEquals($tag->getTitle(), 'foo');
         $this->assertEquals($tag->getWeight(), 1);

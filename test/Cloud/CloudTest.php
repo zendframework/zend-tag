@@ -9,6 +9,7 @@
 
 namespace ZendTest\Tag\Cloud;
 
+use ArrayObject;
 use stdClass;
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\Config as SMConfig;
@@ -229,9 +230,14 @@ class CloudTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $list[0]->getTitle());
     }
 
+    /**
+     * This test uses ArrayObject, which will have essentially the
+     * same behavior as Zend\Config\Config; the code is looking only
+     * for a Traversable.
+     */
     public function testConstructorWithConfig()
     {
-        $cloud = $this->getCloud(new \Zend\Config\Config([
+        $cloud = $this->getCloud(new ArrayObject([
             'tags' => [
                 [
                     'title'  => 'foo',
