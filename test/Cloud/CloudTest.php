@@ -9,8 +9,10 @@
 
 namespace ZendTest\Tag\Cloud;
 
+use ArrayObject;
 use stdClass;
 use Zend\ServiceManager\ServiceManager;
+use Zend\ServiceManager\Config as SMConfig;
 use Zend\Tag;
 use Zend\Tag\Cloud;
 use Zend\Tag\Cloud\Decorator\HtmlCloud;
@@ -228,9 +230,14 @@ class CloudTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $list[0]->getTitle());
     }
 
+    /**
+     * This test uses ArrayObject, which will have essentially the
+     * same behavior as Zend\Config\Config; the code is looking only
+     * for a Traversable.
+     */
     public function testConstructorWithConfig()
     {
-        $cloud = $this->getCloud(new \Zend\Config\Config([
+        $cloud = $this->getCloud(new ArrayObject([
             'tags' => [
                 [
                     'title'  => 'foo',
@@ -320,12 +327,21 @@ class CloudTest extends \PHPUnit_Framework_TestCase
 
         if ($setDecoratorPluginManager) {
             $decorators = $cloud->getDecoratorPluginManager();
+            /*
             $decorators->configure([
                 'invokables' => [
                     'CloudDummy' => CloudDummy::class,
                     'TagDummy'   => TagDummy::class
                 ]
             ]);
+            */
+            $smConfig = new SMConfig([
+              'invokables' => [
+                  'CloudDummy' => CloudDummy::class,
+                  'TagDummy'   => TagDummy::class
+              ]
+            ]);
+            $smConfig->configureServiceManager($decorators);
         }
 
         return $cloud;

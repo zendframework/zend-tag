@@ -9,6 +9,7 @@
 
 namespace ZendTest\Tag\Cloud\Decorator;
 
+use ArrayObject;
 use Zend\Tag;
 use Zend\Tag\Cloud\Decorator;
 
@@ -114,9 +115,18 @@ class HtmlTagTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('pt', $decorator->getFontSizeUnit());
     }
 
+    /**
+     * This test uses ArrayObject, which will have essentially the
+     * same behavior as Zend\Config\Config; the code is looking only
+     * for a Traversable.
+     */
     public function testConstructorWithConfig()
     {
-        $decorator = new Decorator\HtmlTag(new \Zend\Config\Config(['minFontSize' => 5, 'maxFontSize' => 10, 'fontSizeUnit' => 'pt']));
+        $decorator = new Decorator\HtmlTag(new ArrayObject([
+            'minFontSize' => 5,
+            'maxFontSize' => 10,
+            'fontSizeUnit' => 'pt',
+        ]));
 
         $this->assertEquals(5, $decorator->getMinFontSize());
         $this->assertEquals(10, $decorator->getMaxFontSize());

@@ -9,6 +9,7 @@
 
 namespace ZendTest\Tag\Cloud\Decorator;
 
+use ArrayObject;
 use Zend\Tag\Cloud\Decorator;
 
 /**
@@ -72,58 +73,54 @@ class HtmlCloudTest extends \PHPUnit_Framework_TestCase
     public function testConstructorWithArray()
     {
         $decorator = new Decorator\HtmlCloud([
-                                                  'htmlTags'  => ['div'],
-                                                  'separator' => ' '
-                                             ]);
+            'htmlTags'  => ['div'],
+            'separator' => ' ',
+        ]);
 
         $this->assertEquals(
-            '<div>foo bar</div>', $decorator->render(
-                [
-                     'foo',
-                     'bar'
-                ]
-            )
+            '<div>foo bar</div>',
+            $decorator->render([
+                'foo',
+                'bar'
+            ])
         );
     }
 
+    /**
+     * This test uses ArrayObject, which will have essentially the
+     * same behavior as Zend\Config\Config; the code is looking only
+     * for a Traversable.
+     */
     public function testConstructorWithConfig()
     {
-        $decorator = new Decorator\HtmlCloud(
-            new \Zend\Config\Config(
-                [
-                     'htmlTags'  => ['div'],
-                     'separator' => ' '
-                ]
-            )
-        );
+        $decorator = new Decorator\HtmlCloud(new ArrayObject([
+            'htmlTags'  => ['div'],
+            'separator' => ' '
+        ]));
 
         $this->assertEquals(
-            '<div>foo bar</div>', $decorator->render(
-                [
-                     'foo',
-                     'bar'
-                ]
-            )
+            '<div>foo bar</div>',
+            $decorator->render([
+                'foo',
+                'bar'
+            ])
         );
     }
 
     public function testSetOptions()
     {
         $decorator = new Decorator\HtmlCloud();
-        $decorator->setOptions(
-            [
-                 'htmlTags'  => ['div'],
-                 'separator' => ' '
-            ]
-        );
+        $decorator->setOptions([
+            'htmlTags'  => ['div'],
+            'separator' => ' '
+        ]);
 
         $this->assertEquals(
-            '<div>foo bar</div>', $decorator->render(
-                [
-                     'foo',
-                     'bar'
-                ]
-            )
+            '<div>foo bar</div>',
+            $decorator->render([
+                'foo',
+                'bar'
+            ])
         );
     }
 
