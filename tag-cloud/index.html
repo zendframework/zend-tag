@@ -165,7 +165,7 @@ use case might be to create tag clouds in PDF documents.</p>
 <p>You can instantiate and configure <code>Zend\Tag\Cloud</code> either programmatically or
 via a configuration sturcture (either an array or an instance of <code>Traversable</code>).</p>
 <p>The following options are available:</p>
-<table>
+<div class="table-responsive"><table>
 <thead>
 <tr>
 <th>Option</th>
@@ -194,7 +194,7 @@ via a configuration sturcture (either an array or an instance of <code>Traversab
 <td>Array of tags to assign to the cloud. Each tag must either implement <code>Zend\Tag\TaggableInterface</code> or be an array which can be used to instantiate <code>Zend\Tag\Item</code>.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h2 id="using-zend92tag92cloud">Using Zend\Tag\Cloud</h2>
 <p>This example illustrates a basic example of how to create a tag cloud, add
 multiple tags to it, and finally render it.</p>
@@ -294,7 +294,7 @@ should define a URL parameter for every tag used in it.</p>
 defined list of classnames. When setting options for one of those possibilities,
 the corresponding one will automatically be enabled.</p>
 <p>The following configuration options are available:</p>
-<table>
+<div class="table-responsive"><table>
 <thead>
 <tr>
 <th>Option</th>
@@ -329,7 +329,7 @@ the corresponding one will automatically be enabled.</p>
 <td>An array of HTML tags surrounding the anchor. Each element can either be a string, which is used as element type, or an array containing an attribute list for the element, defined as key/value pair. In this case, the array key is used as element type.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>The following example shows how to create a tag cloud with a customized HTML tag decorator.</p>
 <pre class="codehilite"><code class="language-php">$cloud = new Zend\Tag\Cloud([
     'tagDecorator' =&gt; [
@@ -384,7 +384,7 @@ echo $cloud;</code></pre>
 element and add no separation. Like the tag decorator, you can define multiple
 surrounding HTML tags and additionally define a separator. The available options
 are:</p>
-<table>
+<div class="table-responsive"><table>
 <thead>
 <tr>
 <th>Option</th>
@@ -404,7 +404,7 @@ are:</p>
 <td>An array of HTML tags surrounding all tags. Each element can either be a string, which is used as element type, or an array containing an attribute list for the element, defined as key/value pair. In this case, the array key is used as element type.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <pre class="codehilite"><code class="language-php">// Create the cloud and assign static tags to it
 $cloud = new Zend\Tag\Cloud([
     'cloudDecorator' =&gt; [
