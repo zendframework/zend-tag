@@ -69,7 +69,10 @@ class ItemListTest extends \PHPUnit_Framework_TestCase
     {
         $list = new Tag\ItemList();
 
-        $this->setExpectedException('\Zend\Tag\Exception\OutOfBoundsException', 'Item must implement Zend\Tag\TaggableInterface');
+        $this->setExpectedException(
+            '\Zend\Tag\Exception\OutOfBoundsException',
+            'Item must implement Zend\Tag\TaggableInterface'
+        );
         $list[] = 'test';
     }
 
@@ -121,8 +124,10 @@ class ItemListTest extends \PHPUnit_Framework_TestCase
         $list->spreadWeightValues([]);
     }
 
+    // @codingStandardsIgnoreStart
     protected function _getItem($title = 'foo', $weight = 1)
     {
+        // @codingStandardsIgnoreEnd
         return new Tag\Item(['title' => $title, 'weight' => $weight]);
     }
 }

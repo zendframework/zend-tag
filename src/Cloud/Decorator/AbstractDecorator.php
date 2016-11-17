@@ -134,7 +134,7 @@ abstract class AbstractDecorator implements Decorator
      */
     protected function validateElementName($name)
     {
-        if (!preg_match('/^[a-z0-9]+$/i', $name)) {
+        if (! preg_match('/^[a-z0-9]+$/i', $name)) {
             throw new Exception\InvalidElementNameException(sprintf(
                 '%s: Invalid element name "%s" provided; please provide valid HTML element names',
                 __METHOD__,
@@ -151,7 +151,7 @@ abstract class AbstractDecorator implements Decorator
      */
     protected function validateAttributeName($name)
     {
-        if (!preg_match('/^[a-z_:][-a-z0-9_:.]*$/i', $name)) {
+        if (! preg_match('/^[a-z_:][-a-z0-9_:.]*$/i', $name)) {
             throw new Exception\InvalidAttributeNameException(sprintf(
                 '%s: Invalid HTML attribute name "%s" provided; please provide valid HTML attribute names',
                 __METHOD__,

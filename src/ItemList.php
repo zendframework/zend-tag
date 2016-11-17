@@ -111,7 +111,7 @@ class ItemList implements Countable, SeekableIterator, ArrayAccess
             $position++;
         }
 
-        if (!$this->valid()) {
+        if (! $this->valid()) {
             throw new OutOfBoundsException('Invalid seek position');
         }
     }
@@ -200,7 +200,7 @@ class ItemList implements Countable, SeekableIterator, ArrayAccess
     {
         // We need to make that check here, as the method signature must be
         // compatible with ArrayAccess::offsetSet()
-        if (!($item instanceof TaggableInterface)) {
+        if (! ($item instanceof TaggableInterface)) {
             throw new OutOfBoundsException('Item must implement Zend\Tag\TaggableInterface');
         }
 
