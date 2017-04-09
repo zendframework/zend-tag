@@ -242,7 +242,7 @@ $cloud = new Zend\Tag\Cloud([
 echo $cloud;
 ```
 
-The ouput:
+The output:
 
 ```php
 <ul class="my_custom_class" id="tag-cloud"><li><a href="/tag/code" style="font-size:
