@@ -69,10 +69,8 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
 
-        $this->setExpectedException(
-            'Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException',
-            'Classlist is empty'
-        );
+        $this->expectException('Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Classlist is empty');
         $decorator->setClassList([]);
     }
 
@@ -80,10 +78,8 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
 
-        $this->setExpectedException(
-            'Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException',
-            'Classlist contains an invalid classname'
-        );
+        $this->expectException('Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Classlist contains an invalid classname');
         $decorator->setClassList([[]]);
     }
 
@@ -91,10 +87,8 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
 
-        $this->setExpectedException(
-            'Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException',
-            'Invalid fontsize unit specified'
-        );
+        $this->expectException('Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid fontsize unit specified');
         $decorator->setFontSizeUnit('foo');
     }
 
@@ -102,10 +96,8 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
 
-        $this->setExpectedException(
-            'Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException',
-            'Fontsize must be numeric'
-        );
+        $this->expectException('Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Fontsize must be numeric');
         $decorator->setMinFontSize('foo');
     }
 
@@ -113,10 +105,8 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
 
-        $this->setExpectedException(
-            'Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException',
-            'Fontsize must be numeric'
-        );
+        $this->expectException('Zend\Tag\Cloud\Decorator\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Fontsize must be numeric');
         $decorator->setMaxFontSize('foo');
     }
 
@@ -208,7 +198,7 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
         $decorator->setHTMLTags($tags);
-        $this->setExpectedException('Zend\Tag\Exception\InvalidElementNameException');
+        $this->expectException('Zend\Tag\Exception\InvalidElementNameException');
         $decorator->render($this->getTags());
     }
 
@@ -240,7 +230,7 @@ class HtmlTagTest extends TestCase
     {
         $decorator = new Decorator\HtmlTag();
         $decorator->setHTMLTags($tags);
-        $this->setExpectedException('Zend\Tag\Exception\InvalidAttributeNameException');
+        $this->expectException('Zend\Tag\Exception\InvalidAttributeNameException');
         $decorator->render($this->getTags());
     }
 }

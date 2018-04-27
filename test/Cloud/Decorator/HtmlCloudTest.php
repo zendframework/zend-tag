@@ -151,9 +151,7 @@ class HtmlCloudTest extends TestCase
     {
         $decorator = new Decorator\HtmlCloud();
         $decorator->setHTMLTags($tags);
-        $this->setExpectedException(
-            'Zend\Tag\Exception\InvalidElementNameException'
-        );
+        $this->expectException('Zend\Tag\Exception\InvalidElementNameException');
         $decorator->render([]);
     }
 
@@ -191,9 +189,7 @@ class HtmlCloudTest extends TestCase
     {
         $decorator = new Decorator\HtmlCloud();
         $decorator->setHTMLTags($tags);
-        $this->setExpectedException(
-            'Zend\Tag\Exception\InvalidAttributeNameException'
-        );
+        $this->expectException('Zend\Tag\Exception\InvalidAttributeNameException');
         $decorator->render([]);
     }
 }

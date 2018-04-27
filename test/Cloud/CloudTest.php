@@ -61,7 +61,8 @@ class CloudTest extends TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'DecoratorInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('DecoratorInterface');
         $cloud->setCloudDecorator(new stdClass());
     }
 
@@ -90,7 +91,8 @@ class CloudTest extends TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'DecoratorInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('DecoratorInterface');
         $cloud->setTagDecorator(new stdClass());
     }
 
@@ -142,7 +144,8 @@ class CloudTest extends TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'TaggableInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('TaggableInterface');
         $cloud->appendTag('foo');
     }
 
@@ -210,7 +213,8 @@ class CloudTest extends TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'TaggableInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('TaggableInterface');
         $cloud->setTags(['foo']);
     }
 

@@ -65,7 +65,8 @@ class ItemTest extends TestCase
 
     public function testInvalidTitle()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Title must be a string');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Title must be a string');
         $tag = new Tag\Item(['title' => 10, 'weight' => 1]);
     }
 
@@ -80,7 +81,8 @@ class ItemTest extends TestCase
 
     public function testInvalidWeight()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Weight must be numeric');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Weight must be numeric');
         $tag = new Tag\Item(['title' => 'foo', 'weight' => 'foobar']);
     }
 
@@ -92,22 +94,22 @@ class ItemTest extends TestCase
 
     public function testInvalidOptions()
     {
-        $this->setExpectedException(
-            '\Zend\Tag\Exception\InvalidArgumentException',
-            'Invalid options provided to constructor'
-        );
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid options provided to constructor');
         $tag = new Tag\Item('test');
     }
 
     public function testMissingTitle()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Title was not set');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Title was not set');
         $tag = new Tag\Item(['weight' => 1]);
     }
 
     public function testMissingWeight()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Weight was not set');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Weight was not set');
         $tag = new Tag\Item(['title' => 'foo']);
     }
 

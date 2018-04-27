@@ -60,7 +60,8 @@ class ItemListTest extends TestCase
         }
         $list->seek(2);
 
-        $this->setExpectedException('Zend\Tag\Exception\OutOfBoundsException', 'Invalid seek position');
+        $this->expectException('Zend\Tag\Exception\OutOfBoundsException');
+        $this->expectExceptionMessage('Invalid seek position');
         $list->seek(3);
     }
 
@@ -68,10 +69,8 @@ class ItemListTest extends TestCase
     {
         $list = new Tag\ItemList();
 
-        $this->setExpectedException(
-            '\Zend\Tag\Exception\OutOfBoundsException',
-            'Item must implement Zend\Tag\TaggableInterface'
-        );
+        $this->expectException('\Zend\Tag\Exception\OutOfBoundsException');
+        $this->expectExceptionMessage('Item must implement Zend\Tag\TaggableInterface');
         $list[] = 'test';
     }
 
@@ -119,7 +118,8 @@ class ItemListTest extends TestCase
     {
         $list = new Tag\ItemList();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'Value list may not be empty');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Value list may not be empty');
         $list->spreadWeightValues([]);
     }
 
