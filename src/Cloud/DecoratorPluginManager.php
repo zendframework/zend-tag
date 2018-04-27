@@ -76,12 +76,12 @@ class DecoratorPluginManager extends AbstractPluginManager
      * @param mixed $instance
      * @throws InvalidServiceException
      */
-     public function validatePlugin($instance)
-     {
-         try {
-             $this->validate($instance);
-         } catch (InvalidServiceException $e) {
-             throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
-         }
-     }
+    public function validatePlugin($instance)
+    {
+        try {
+            $this->validate($instance);
+        } catch (InvalidServiceException $e) {
+            throw new RuntimeException($e->getMessage(), $e->getCode(), $e);
+        }
+    }
 }

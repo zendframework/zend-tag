@@ -129,7 +129,7 @@ class Cloud
             return $this;
         }
 
-        if (!is_array($tag)) {
+        if (! is_array($tag)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Tag must be an instance of %s\TaggableInterface or an array; received "%s"',
                 __NAMESPACE__,
@@ -194,8 +194,10 @@ class Cloud
             $decorator = $this->getDecoratorPluginManager()->get($decorator, $options);
         }
 
-        if (!($decorator instanceof Cloud\Decorator\AbstractCloud)) {
-            throw new Exception\InvalidArgumentException('DecoratorInterface is no instance of Cloud\Decorator\AbstractCloud');
+        if (! ($decorator instanceof Cloud\Decorator\AbstractCloud)) {
+            throw new Exception\InvalidArgumentException(
+                'DecoratorInterface is no instance of Cloud\Decorator\AbstractCloud'
+            );
         }
 
         $this->cloudDecorator = $decorator;
@@ -241,8 +243,10 @@ class Cloud
             $decorator = $this->getDecoratorPluginManager()->get($decorator, $options);
         }
 
-        if (!($decorator instanceof Cloud\Decorator\AbstractTag)) {
-            throw new Exception\InvalidArgumentException('DecoratorInterface is no instance of Cloud\Decorator\AbstractTag');
+        if (! ($decorator instanceof Cloud\Decorator\AbstractTag)) {
+            throw new Exception\InvalidArgumentException(
+                'DecoratorInterface is no instance of Cloud\Decorator\AbstractTag'
+            );
         }
 
         $this->tagDecorator = $decorator;

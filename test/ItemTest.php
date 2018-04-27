@@ -93,7 +93,10 @@ class ItemTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidOptions()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Invalid options provided to constructor');
+        $this->setExpectedException(
+            '\Zend\Tag\Exception\InvalidArgumentException',
+            'Invalid options provided to constructor'
+        );
         $tag = new Tag\Item('test');
     }
 

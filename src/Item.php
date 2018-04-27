@@ -59,7 +59,7 @@ class Item implements TaggableInterface
             $options = ArrayUtils::iteratorToArray($options);
         }
 
-        if (!is_array($options)) {
+        if (! is_array($options)) {
             throw new Exception\InvalidArgumentException('Invalid options provided to constructor');
         }
 
@@ -115,7 +115,7 @@ class Item implements TaggableInterface
      */
     public function setTitle($title)
     {
-        if (!is_string($title)) {
+        if (! is_string($title)) {
             throw new Exception\InvalidArgumentException('Title must be a string');
         }
 
@@ -142,7 +142,7 @@ class Item implements TaggableInterface
      */
     public function setWeight($weight)
     {
-        if (!is_numeric($weight)) {
+        if (! is_numeric($weight)) {
             throw new Exception\InvalidArgumentException('Weight must be numeric');
         }
 

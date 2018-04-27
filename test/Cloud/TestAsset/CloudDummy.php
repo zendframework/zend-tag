@@ -11,7 +11,9 @@ namespace ZendTest\Tag\Cloud\TestAsset;
 
 class CloudDummy extends \Zend\Tag\Cloud\Decorator\HtmlCloud
 {
+    // @codingStandardsIgnoreStart
     protected $_foo;
+    // @codingStandardsIgnoreEnd
 
     public function setFoo($value)
     {

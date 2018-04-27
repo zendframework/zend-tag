@@ -78,7 +78,7 @@ class HtmlTag extends AbstractTag
             }
 
             foreach ($classList as $class) {
-                if (!is_string($class)) {
+                if (! is_string($class)) {
                     throw new InvalidArgumentException('Classlist contains an invalid classname');
                 }
             }
@@ -109,7 +109,7 @@ class HtmlTag extends AbstractTag
      */
     public function setFontSizeUnit($fontSizeUnit)
     {
-        if (!in_array($fontSizeUnit, $this->allowedFontSizeUnits)) {
+        if (! in_array($fontSizeUnit, $this->allowedFontSizeUnits)) {
             throw new InvalidArgumentException('Invalid fontsize unit specified');
         }
 
@@ -158,7 +158,7 @@ class HtmlTag extends AbstractTag
      */
     public function setMaxFontSize($maxFontSize)
     {
-        if (!is_numeric($maxFontSize)) {
+        if (! is_numeric($maxFontSize)) {
             throw new InvalidArgumentException('Fontsize must be numeric');
         }
 
@@ -186,7 +186,7 @@ class HtmlTag extends AbstractTag
      */
     public function setMinFontSize($minFontSize)
     {
-        if (!is_numeric($minFontSize)) {
+        if (! is_numeric($minFontSize)) {
             throw new InvalidArgumentException('Fontsize must be numeric');
         }
 
@@ -214,7 +214,7 @@ class HtmlTag extends AbstractTag
      */
     public function render($tags)
     {
-        if (!$tags instanceof ItemList) {
+        if (! $tags instanceof ItemList) {
             throw new InvalidArgumentException(sprintf(
                 'HtmlTag::render() expects a Zend\Tag\ItemList argument; received "%s"',
                 (is_object($tags) ? get_class($tags) : gettype($tags))
@@ -231,12 +231,21 @@ class HtmlTag extends AbstractTag
         $escaper = $this->getEscaper();
         foreach ($tags as $tag) {
             if (null === ($classList = $this->getClassList())) {
-                $attribute = sprintf('style="font-size: %d%s;"', $tag->getParam('weightValue'), $this->getFontSizeUnit());
+                $attribute = sprintf(
+                    'style="font-size: %d%s;"',
+                    $tag->getParam('weightValue'),
+                    $this->getFontSizeUnit()
+                );
             } else {
                 $attribute = sprintf('class="%s"', $escaper->escapeHtmlAttr($tag->getParam('weightValue')));
             }
 
-            $tagHTML  = sprintf('<a href="%s" %s>%s</a>', $escaper->escapeHtml($tag->getParam('url')), $attribute, $escaper->escapeHtml($tag->getTitle()));
+            $tagHTML  = sprintf(
+                '<a href="%s" %s>%s</a>',
+                $escaper->escapeHtml($tag->getParam('url')),
+                $attribute,
+                $escaper->escapeHtml($tag->getTitle())
+            );
             $tagHTML  = $this->wrapTag($tagHTML);
             $result[] = $tagHTML;
         }

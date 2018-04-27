@@ -83,7 +83,7 @@ class HtmlCloud extends AbstractCloud
      */
     public function render($tags)
     {
-        if (!is_array($tags)) {
+        if (! is_array($tags)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'HtmlCloud::render() expects an array argument; received "%s"',
                 (is_object($tags) ? get_class($tags) : gettype($tags))
