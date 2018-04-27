@@ -1,10 +1,8 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-tag for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
 
 namespace ZendTest\Tag\Cloud;
@@ -34,8 +32,8 @@ class CloudTest extends TestCase
         $cloud = $this->getCloud();
         $this->assertInstanceOf(ItemList::class, $cloud->getItemList());
 
-        $cloud->setItemList(new ItemListDummy);
-        $this->assertInstanceOf(ItemListDummy::class, $cloud->getItemList());
+        $cloud->setItemList(new TestAsset\ItemListDummy());
+        $this->assertInstanceOf(TestAsset\ItemListDummy::class, $cloud->getItemList());
     }
 
     public function testSetCloudDecoratorViaArray()
