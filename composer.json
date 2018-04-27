@@ -1,16 +1,19 @@
 {
     "name": "zendframework/zend-tag",
-    "description": "a component suite which provides a facility to work with taggable Items",
+    "description": "Manipulate and weight taggable items, and create tag clouds",
     "license": "BSD-3-Clause",
     "keywords": [
-        "zf2",
+        "zf",
+        "zendframework",
         "tag"
     ],
-    "homepage": "https://github.com/zendframework/zend-tag",
-    "autoload": {
-        "psr-4": {
-            "Zend\\Tag\\": "src/"
-        }
+    "support": {
+        "docs": "https://docs.zendframework.com/zend-tag/",
+        "issues": "https://github.com/zendframework/zend-tag/issues",
+        "source": "https://github.com/zendframework/zend-tag",
+        "rss": "https://github.com/zendframework/zend-tag/releases.atom",
+        "chat": "https://zendframework-slack.herokuapp.com",
+        "forum": "https://discourse.zendframework.com/c/questions/components"
     },
     "require": {
         "php": "^5.6 || ^7.0",
@@ -25,17 +28,23 @@
     "suggest": {
         "zendframework/zend-servicemanager": "Zend\\ServiceManager component"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.6-dev",
-            "dev-develop": "2.7-dev"
+    "autoload": {
+        "psr-4": {
+            "Zend\\Tag\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "ZendTest\\Tag\\": "test/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.6.x-dev",
+            "dev-develop": "2.7.x-dev"
         }
     },
     "scripts": {
