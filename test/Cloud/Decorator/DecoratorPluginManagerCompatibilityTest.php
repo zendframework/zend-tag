@@ -9,9 +9,9 @@ namespace ZendTest\ServiceManager;
 
 use PHPUnit\Framework\TestCase;
 use Zend\ServiceManager\ServiceManager;
-use Zend\Tag\Cloud\DecoratorPluginManager;
-use Zend\Tag\Cloud\Decorator\DecoratorInterface;
 use Zend\ServiceManager\Test\CommonPluginManagerTrait;
+use Zend\Tag\Cloud\Decorator\DecoratorInterface;
+use Zend\Tag\Cloud\DecoratorPluginManager;
 
 /**
  * Example test of using CommonPluginManagerTrait

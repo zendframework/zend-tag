@@ -9,8 +9,8 @@ namespace Zend\Tag\Cloud;
 
 use RuntimeException;
 use Zend\ServiceManager\AbstractPluginManager;
-use Zend\ServiceManager\Factory\InvokableFactory;
 use Zend\ServiceManager\Exception\InvalidServiceException;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Plugin manager implementation for decorators.
