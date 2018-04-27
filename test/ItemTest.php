@@ -10,12 +10,13 @@
 namespace ZendTest\Tag;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 use Zend\Tag;
 
 /**
  * @group      Zend_Tag
  */
-class ItemTest extends \PHPUnit_Framework_TestCase
+class ItemTest extends TestCase
 {
     public function testConstructor()
     {

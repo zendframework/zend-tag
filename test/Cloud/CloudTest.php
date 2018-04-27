@@ -10,6 +10,7 @@
 namespace ZendTest\Tag\Cloud;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\Config as SMConfig;
@@ -26,7 +27,7 @@ use ZendTest\Tag\Cloud\TestAsset\TagDummy;
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class CloudTest extends \PHPUnit_Framework_TestCase
+class CloudTest extends TestCase
 {
     public function testGetAndSetItemList()
     {

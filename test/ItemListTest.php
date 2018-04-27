@@ -9,12 +9,13 @@
 
 namespace ZendTest\Tag;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Tag;
 
 /**
  * @group      Zend_Tag
  */
-class ItemListTest extends \PHPUnit_Framework_TestCase
+class ItemListTest extends TestCase
 {
     public function testArrayAccessAndCount()
     {

@@ -8,7 +8,7 @@
  */
 namespace ZendTest\ServiceManager;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\ServiceManager\ServiceManager;
 use Zend\Tag\Cloud\DecoratorPluginManager;
 use Zend\Tag\Cloud\Decorator\DecoratorInterface;

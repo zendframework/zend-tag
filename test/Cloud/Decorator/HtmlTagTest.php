@@ -10,6 +10,7 @@
 namespace ZendTest\Tag\Cloud\Decorator;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 use Zend\Tag;
 use Zend\Tag\Cloud\Decorator;
 
@@ -17,7 +18,7 @@ use Zend\Tag\Cloud\Decorator;
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class HtmlTagTest extends \PHPUnit_Framework_TestCase
+class HtmlTagTest extends TestCase
 {
     public function testDefaultOutput()
     {
