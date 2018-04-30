@@ -1,18 +1,17 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-tag for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
+
 namespace ZendTest\ServiceManager;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\ServiceManager\ServiceManager;
-use Zend\Tag\Cloud\DecoratorPluginManager;
-use Zend\Tag\Cloud\Decorator\DecoratorInterface;
 use Zend\ServiceManager\Test\CommonPluginManagerTrait;
+use Zend\Tag\Cloud\Decorator\DecoratorInterface;
+use Zend\Tag\Cloud\DecoratorPluginManager;
 
 /**
  * Example test of using CommonPluginManagerTrait
