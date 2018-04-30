@@ -5,8 +5,10 @@
  * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
 
-namespace Zend\Tag\Exception;
+namespace ZendTest\Tag\Cloud\TestAsset;
 
-class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
+use Zend\Tag\ItemList;
+
+class ItemListDummy extends ItemList
 {
 }

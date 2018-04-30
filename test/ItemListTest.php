@@ -1,20 +1,19 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-tag for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
 
 namespace ZendTest\Tag;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Tag;
 
 /**
  * @group      Zend_Tag
  */
-class ItemListTest extends \PHPUnit_Framework_TestCase
+class ItemListTest extends TestCase
 {
     public function testArrayAccessAndCount()
     {
@@ -61,7 +60,8 @@ class ItemListTest extends \PHPUnit_Framework_TestCase
         }
         $list->seek(2);
 
-        $this->setExpectedException('Zend\Tag\Exception\OutOfBoundsException', 'Invalid seek position');
+        $this->expectException('Zend\Tag\Exception\OutOfBoundsException');
+        $this->expectExceptionMessage('Invalid seek position');
         $list->seek(3);
     }
 
@@ -69,7 +69,8 @@ class ItemListTest extends \PHPUnit_Framework_TestCase
     {
         $list = new Tag\ItemList();
 
-        $this->setExpectedException('\Zend\Tag\Exception\OutOfBoundsException', 'Item must implement Zend\Tag\TaggableInterface');
+        $this->expectException('\Zend\Tag\Exception\OutOfBoundsException');
+        $this->expectExceptionMessage('Item must implement Zend\Tag\TaggableInterface');
         $list[] = 'test';
     }
 
@@ -117,12 +118,15 @@ class ItemListTest extends \PHPUnit_Framework_TestCase
     {
         $list = new Tag\ItemList();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'Value list may not be empty');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Value list may not be empty');
         $list->spreadWeightValues([]);
     }
 
+    // @codingStandardsIgnoreStart
     protected function _getItem($title = 'foo', $weight = 1)
     {
+        // @codingStandardsIgnoreEnd
         return new Tag\Item(['title' => $title, 'weight' => $weight]);
     }
 }

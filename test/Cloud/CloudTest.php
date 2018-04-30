@@ -1,20 +1,18 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-tag for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
 
 namespace ZendTest\Tag\Cloud;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 use stdClass;
-use Zend\ServiceManager\ServiceManager;
 use Zend\ServiceManager\Config as SMConfig;
+use Zend\ServiceManager\ServiceManager;
 use Zend\Tag;
-use Zend\Tag\Cloud;
 use Zend\Tag\Cloud\Decorator\HtmlCloud;
 use Zend\Tag\Cloud\Decorator\HtmlTag;
 use Zend\Tag\Cloud\DecoratorPluginManager;
@@ -26,15 +24,15 @@ use ZendTest\Tag\Cloud\TestAsset\TagDummy;
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class CloudTest extends \PHPUnit_Framework_TestCase
+class CloudTest extends TestCase
 {
     public function testGetAndSetItemList()
     {
         $cloud = $this->getCloud();
         $this->assertInstanceOf(ItemList::class, $cloud->getItemList());
 
-        $cloud->setItemList(new ItemListDummy);
-        $this->assertInstanceOf(ItemListDummy::class, $cloud->getItemList());
+        $cloud->setItemList(new TestAsset\ItemListDummy());
+        $this->assertInstanceOf(TestAsset\ItemListDummy::class, $cloud->getItemList());
     }
 
     public function testSetCloudDecoratorViaArray()
@@ -62,7 +60,8 @@ class CloudTest extends \PHPUnit_Framework_TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'DecoratorInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('DecoratorInterface');
         $cloud->setCloudDecorator(new stdClass());
     }
 
@@ -91,7 +90,8 @@ class CloudTest extends \PHPUnit_Framework_TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'DecoratorInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('DecoratorInterface');
         $cloud->setTagDecorator(new stdClass());
     }
 
@@ -143,7 +143,8 @@ class CloudTest extends \PHPUnit_Framework_TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'TaggableInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('TaggableInterface');
         $cloud->appendTag('foo');
     }
 
@@ -211,7 +212,8 @@ class CloudTest extends \PHPUnit_Framework_TestCase
     {
         $cloud = $this->getCloud();
 
-        $this->setExpectedException('Zend\Tag\Exception\InvalidArgumentException', 'TaggableInterface');
+        $this->expectException('Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('TaggableInterface');
         $cloud->setTags(['foo']);
     }
 
