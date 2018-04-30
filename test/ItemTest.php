@@ -1,21 +1,20 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-tag for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
 
 namespace ZendTest\Tag;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 use Zend\Tag;
 
 /**
  * @group      Zend_Tag
  */
-class ItemTest extends \PHPUnit_Framework_TestCase
+class ItemTest extends TestCase
 {
     public function testConstructor()
     {
@@ -66,7 +65,8 @@ class ItemTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidTitle()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Title must be a string');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Title must be a string');
         $tag = new Tag\Item(['title' => 10, 'weight' => 1]);
     }
 
@@ -81,7 +81,8 @@ class ItemTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidWeight()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Weight must be numeric');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Weight must be numeric');
         $tag = new Tag\Item(['title' => 'foo', 'weight' => 'foobar']);
     }
 
@@ -93,19 +94,22 @@ class ItemTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidOptions()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Invalid options provided to constructor');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid options provided to constructor');
         $tag = new Tag\Item('test');
     }
 
     public function testMissingTitle()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Title was not set');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Title was not set');
         $tag = new Tag\Item(['weight' => 1]);
     }
 
     public function testMissingWeight()
     {
-        $this->setExpectedException('\Zend\Tag\Exception\InvalidArgumentException', 'Weight was not set');
+        $this->expectException('\Zend\Tag\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Weight was not set');
         $tag = new Tag\Item(['title' => 'foo']);
     }
 

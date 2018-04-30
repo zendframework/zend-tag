@@ -1,22 +1,21 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @see       https://github.com/zendframework/zend-tag for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (https://www.zend.com)
+ * @license   https://github.com/zendframework/zend-tag/blob/master/LICENSE.md New BSD License
  */
 
 namespace ZendTest\Tag\Cloud\Decorator;
 
 use ArrayObject;
+use PHPUnit\Framework\TestCase;
 use Zend\Tag\Cloud\Decorator;
 
 /**
  * @group      Zend_Tag
  * @group      Zend_Tag_Cloud
  */
-class HtmlCloudTest extends \PHPUnit_Framework_TestCase
+class HtmlCloudTest extends TestCase
 {
     public function testDefaultOutput()
     {
@@ -152,9 +151,7 @@ class HtmlCloudTest extends \PHPUnit_Framework_TestCase
     {
         $decorator = new Decorator\HtmlCloud();
         $decorator->setHTMLTags($tags);
-        $this->setExpectedException(
-            'Zend\Tag\Exception\InvalidElementNameException'
-        );
+        $this->expectException('Zend\Tag\Exception\InvalidElementNameException');
         $decorator->render([]);
     }
 
@@ -192,9 +189,7 @@ class HtmlCloudTest extends \PHPUnit_Framework_TestCase
     {
         $decorator = new Decorator\HtmlCloud();
         $decorator->setHTMLTags($tags);
-        $this->setExpectedException(
-            'Zend\Tag\Exception\InvalidAttributeNameException'
-        );
+        $this->expectException('Zend\Tag\Exception\InvalidAttributeNameException');
         $decorator->render([]);
     }
 }
