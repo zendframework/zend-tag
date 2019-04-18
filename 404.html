@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zend\Tag">  
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="//img/favicon.ico">
 
-    <title>Quick Start - zend-tag - Zend Framework Docs</title>
+    <title>zend-tag - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-f3b53f5ceb.css">
+    <link rel="stylesheet" href="//css/styles-f3b53f5ceb.css">
 </head>
 <body id="page-top">
 
@@ -31,7 +31,7 @@
             
             <span class="navbar-brand">
                 <a class="logo-link" href="https://framework.zend.com/" data-tooltip data-placement="bottom" title="Go to the ZF homepage">
-                    <img src="../img/zend-framework-logo.svg" height="28" alt="Zend Framework">
+                    <img src="//img/zend-framework-logo.svg" height="28" alt="Zend Framework">
                 </a>
             </span>
         </div>
@@ -66,7 +66,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-tag</a>
+            <a href="/.">zend-tag</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,19 +75,19 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-tag</a>
-                    </li>
-                
-            
-                
-                    <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Quick Start</a>
+                        <a href="/." class="subnavigation__link">zend-tag</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../tag-cloud/" class="subnavigation__link">Tag Clouds</a>
+                        <a href="/quick-start/" class="subnavigation__link">Quick Start</a>
+                    </li>
+                
+            
+                
+                    <li class="subnavigation__list-item ">
+                        <a href="/tag-cloud/" class="subnavigation__link">Tag Clouds</a>
                     </li>
                 
             
@@ -160,118 +160,18 @@
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
-                    <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-    <li><a href="https://framework.zend.com/">Home</a></li>
 
-    
-        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+<h1 class="content__title">404</h1>
+<blockquote>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
+</blockquote>
 
-        
-            <li><a href="..">zend-tag</a></li>
-
-            
-
-            <li class="active">Quick Start</li>
-        
-    
-</ol>
+<a href="/" class="btn btn-default" role="button">Go to homepage</a>
 
 
-    
-
-    
-    
-
-    
-    
-        <div class="toc">
-            <h6 class="toc__headline">In This Article</h6>
-            <ul class="toc__list">
-                
-                    <li class="toc__entry">
-                        <a href="#quick-start" class="toc__link">Quick Start</a>
-                    </li>
-                
-            </ul>
-        </div>
-    
-
-
-    <h1 id="introduction-and-quick-start">Introduction and Quick Start</h1>
-<p>zend-tag provides the ability to work with taggable items. At its foundation, it
-provides two classes to work with tags, <code>Zend\Tag\Item</code> and <code>Zend\Tag\ItemList</code>.
-Additionally, it comes with the interface <code>Zend\Tag\TaggableInterface</code>, which
-allows you to use any of your models as a taggable item in conjunction with the
-component.</p>
-<p><code>Zend\Tag\Item</code> provides the essential functionality required to work with all
-other functionality within the component. A taggable item always consists of a
-title and a relative weight (e.g. number of occurrences). It also stores
-parameters which are used by the different sub-components.</p>
-<p><code>Zend\Tag\ItemList</code> exists to group multiple items together as an array
-iterator, and provides additional functionality to calculate absolute weight
-values based on the given relative weights of each item in it.</p>
-<h2 id="quick-start">Quick Start</h2>
-<p>This example illustrates how to create a list of tags and spread absolute weight
-values over them.</p>
-<pre class="codehilite"><code class="language-php">// Create the item list
-$list = new Zend\Tag\ItemList();
-
-// Assign tags to it
-$list[] = new Zend\Tag\Item(['title' =&gt; 'Code', 'weight' =&gt; 50]);
-$list[] = new Zend\Tag\Item(['title' =&gt; 'Zend Framework', 'weight' =&gt; 1]);
-$list[] = new Zend\Tag\Item(['title' =&gt; 'PHP', 'weight' =&gt; 5]);
-
-// Spread absolute values on the items
-$list-&gt;spreadWeightValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-
-// Output the items with their absolute values
-foreach ($list as $item) {
-    printf("%s: %d\n", $item-&gt;getTitle(), $item-&gt;getParam('weightValue'));
-}</code></pre>
-
-<p>This will output the three items "Code", "Zend Framework", and "PHP", with the
-absolute values 10, 1 and 2:</p>
-<pre class="codehilite"><code>Code: 10
-Zend Framework: 1
-PHP: 2</code></pre>
-
-
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="..">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../tag-cloud/">
-                    Next <i class="fa fa-chevron-right"></i>
-                </a>
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-tag/edit/master/docs/book/quick-start.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             <!-- content:end -->
             </div>
             <div class="col-md-3 col-xs-12 sidebar">
@@ -287,7 +187,7 @@ PHP: 2</code></pre>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-tag</a>
+            <a href="/.">zend-tag</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -296,19 +196,19 @@ PHP: 2</code></pre>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-tag</a>
-                    </li>
-                
-            
-                
-                    <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Quick Start</a>
+                        <a href="/." class="subnavigation__link">zend-tag</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../tag-cloud/" class="subnavigation__link">Tag Clouds</a>
+                        <a href="/quick-start/" class="subnavigation__link">Quick Start</a>
+                    </li>
+                
+            
+                
+                    <li class="subnavigation__list-item ">
+                        <a href="/tag-cloud/" class="subnavigation__link">Tag Clouds</a>
                     </li>
                 
             
@@ -383,11 +283,11 @@ PHP: 2</code></pre>
 </footer>
 
     <script>
-        var base_url = '..',
+        var base_url = '/',
             siteName = 'zend-tag';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="//js/scripts-8d7ae56abf.js"></script>
+        <script src="/search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
