@@ -11,7 +11,8 @@
 
     <title>Tag Clouds - zend-tag</title>
 
-    <link rel="stylesheet" href="../css/styles-e3f3751b65.css">
+    <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -63,35 +64,37 @@
             
             
                 <div class="nav navbar-nav navbar-collapse visible-xs-block ">
-                    <div class="subnavigation hidden-print">
-    <h4 class="subnavigation__title">
-        <a href="..">zend-tag</a>
-    </h4>
+                    
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">
+            <a href="">zend-tag</a>
+        </h4>
 
-    <h5 class="subnavigation__subtitle">Table of Contents</h5>
+        <h5 class="subnavigation__subtitle">Table of Contents</h5>
 
-    <ul class="subnavigation__list">
-        
+        <ul class="subnavigation__list">
             
-                <li class="subnavigation__list-item ">
-                    <a href=".." class="subnavigation__link">zend-tag</a>
-                </li>
+                
+                    <li class="subnavigation__list-item ">
+                        <a href="" class="subnavigation__link">zend-tag</a>
+                    </li>
+                
             
-        
+                
+                    <li class="subnavigation__list-item ">
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
+                    </li>
+                
             
-                <li class="subnavigation__list-item ">
-                    <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
-                </li>
+                
+                    <li class="subnavigation__list-item subnavigation__list-item--active">
+                        <a href="tag-cloud/" class="subnavigation__link">Tag Clouds</a>
+                    </li>
+                
             
-        
-            
-                <li class="subnavigation__list-item subnavigation__list-item--active">
-                    <a href="./" class="subnavigation__link">Tag Clouds</a>
-                </li>
-            
-        
-    </ul>
-</div>
+        </ul>
+    </div>
+
                 </div>
             
 
@@ -142,19 +145,36 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="..">zend-tag</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-  
-  <li class="active">Tag Clouds</li>
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="">zend-tag</a></li>
+
+            
+
+            <li class="active">Tag Clouds</li>
+        
+    
 </ol>
 
 
@@ -247,19 +267,19 @@ echo $cloud;</code></pre>
 
 <p>This will output the tag cloud with the three tags, spread with the default
 font-sizes:</p>
-<pre class="codehilite"><code class="language-php">&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
+<pre class="codehilite"><code class="language-php">&lt;ul class="zend-tag-cloud"&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/tag/code&quot; style=&quot;font-size: 20px;&quot;&gt;
+        &lt;a href="/tag/code" style="font-size: 20px;"&gt;
             Code
         &lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 10px;&quot;&gt;
+        &lt;a href="/tag/zend-framework" style="font-size: 10px;"&gt;
             Zend Framework
         &lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 11px;&quot;&gt;
+        &lt;a href="/tag/php" style="font-size: 11px;"&gt;
             PHP
         &lt;/a&gt;
     &lt;/li&gt;
@@ -273,15 +293,15 @@ decorator</a>.</p>
 </blockquote>
 <p>The following example shows how create the <strong>same</strong> tag cloud from a <code>Zend\Config\Config</code> object.</p>
 <pre class="codehilite"><code class="language-ini">; An example tags.ini file
-tags.1.title = &quot;Code&quot;
+tags.1.title = "Code"
 tags.1.weight = 50
-tags.1.params.url = &quot;/tag/code&quot;
-tags.2.title = &quot;Zend Framework&quot;
+tags.1.params.url = "/tag/code"
+tags.2.title = "Zend Framework"
 tags.2.weight = 1
-tags.2.params.url = &quot;/tag/zend-framework&quot;
-tags.3.title = &quot;PHP&quot;
+tags.2.params.url = "/tag/zend-framework"
+tags.3.title = "PHP"
 tags.3.weight = 2
-tags.3.params.url = &quot;/tag/php&quot;</code></pre>
+tags.3.params.url = "/tag/php"</code></pre>
 
 <pre class="codehilite"><code class="language-php">// Create the cloud from a Zend\Config\Config object
 $config = Zend\Config\Factory::fromFile('tags.ini');
@@ -384,15 +404,15 @@ the corresponding one will automatically be enabled.</p>
 echo $cloud;</code></pre>
 
 <p>The output:</p>
-<pre class="codehilite"><code class="language-php">&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
-    &lt;li class=&quot;my_custom_class&quot;&gt;
-        &lt;a href=&quot;/tag/code&quot; style=&quot;font-size: 50px;&quot;&gt;Code&lt;/a&gt;
+<pre class="codehilite"><code class="language-php">&lt;ul class="zend-tag-cloud"&gt;
+    &lt;li class="my_custom_class"&gt;
+        &lt;a href="/tag/code" style="font-size: 50px;"&gt;Code&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class=&quot;my_custom_class&quot;&gt;
-        &lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 20px;&quot;&gt;Zend Framework&lt;/a&gt;
+    &lt;li class="my_custom_class"&gt;
+        &lt;a href="/tag/zend-framework" style="font-size: 20px;"&gt;Zend Framework&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class=&quot;my_custom_class&quot;&gt;
-        &lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 23px;&quot;&gt;PHP&lt;/a&gt;
+    &lt;li class="my_custom_class"&gt;
+        &lt;a href="/tag/php" style="font-size: 23px;"&gt;PHP&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
@@ -427,7 +447,7 @@ $cloud = new Zend\Tag\Cloud([
     'cloudDecorator' =&gt; [
         'decorator' =&gt; 'htmlcloud',
         'options'   =&gt; [
-            'separator' =&gt; &quot;\n\n&quot;,
+            'separator' =&gt; "\n\n",
             'htmlTags'  =&gt; [
                 'ul' =&gt; [
                     'class' =&gt; 'my_custom_class',
@@ -459,12 +479,12 @@ $cloud = new Zend\Tag\Cloud([
 echo $cloud;</code></pre>
 
 <p>The output:</p>
-<pre class="codehilite"><code class="language-php">&lt;ul class=&quot;my_custom_class&quot; id=&quot;tag-cloud&quot;&gt;&lt;li&gt;&lt;a href=&quot;/tag/code&quot; style=&quot;font-size:
-20px;&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+<pre class="codehilite"><code class="language-php">&lt;ul class="my_custom_class" id="tag-cloud"&gt;&lt;li&gt;&lt;a href="/tag/code" style="font-size:
+20px;"&gt;Code&lt;/a&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 10px;&quot;&gt;Zend Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/tag/zend-framework" style="font-size: 10px;"&gt;Zend Framework&lt;/a&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 11px;&quot;&gt;PHP&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</code></pre>
+&lt;li&gt;&lt;a href="/tag/php" style="font-size: 11px;"&gt;PHP&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</code></pre>
 
 
 
@@ -474,7 +494,7 @@ echo $cloud;</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../quick-start/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="quick-start/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -488,14 +508,16 @@ echo $cloud;</code></pre>
 </nav>
 
 
-<div class="help-wanted">
-    <p>
-        Found a mistake or want to contribute to the documentation?
-        <a href="https://github.com/zendframework/zend-tag/edit/master/docs/book/tag-cloud.md" target="_blank" class="help-wanted__link">
-            Edit this page on GitHub!
-        </a>
-    </p>
-</div>
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-tag/edit/master/docs/book/tag-cloud.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
                 
             <!-- content:end -->
             </div>
@@ -509,35 +531,37 @@ echo $cloud;</code></pre>
         <optgroup label="Components"></optgroup>
     </select>
 </div>
-                    <div class="subnavigation hidden-print">
-    <h4 class="subnavigation__title">
-        <a href="..">zend-tag</a>
-    </h4>
+                    
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">
+            <a href="">zend-tag</a>
+        </h4>
 
-    <h5 class="subnavigation__subtitle">Table of Contents</h5>
+        <h5 class="subnavigation__subtitle">Table of Contents</h5>
 
-    <ul class="subnavigation__list">
-        
+        <ul class="subnavigation__list">
             
-                <li class="subnavigation__list-item ">
-                    <a href=".." class="subnavigation__link">zend-tag</a>
-                </li>
+                
+                    <li class="subnavigation__list-item ">
+                        <a href="" class="subnavigation__link">zend-tag</a>
+                    </li>
+                
             
-        
+                
+                    <li class="subnavigation__list-item ">
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
+                    </li>
+                
             
-                <li class="subnavigation__list-item ">
-                    <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
-                </li>
+                
+                    <li class="subnavigation__list-item subnavigation__list-item--active">
+                        <a href="tag-cloud/" class="subnavigation__link">Tag Clouds</a>
+                    </li>
+                
             
-        
-            
-                <li class="subnavigation__list-item subnavigation__list-item--active">
-                    <a href="./" class="subnavigation__link">Tag Clouds</a>
-                </li>
-            
-        
-    </ul>
-</div>
+        </ul>
+    </div>
+
                 
             </div>
         </div>
@@ -590,6 +614,15 @@ echo $cloud;</code></pre>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
+                    <li class="support__list-item">
+                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -600,9 +633,8 @@ echo $cloud;</code></pre>
         var base_url = '..',
             siteName = 'zend-tag';
     </script>
-    <script src="../js/scripts-dcbafde59f.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -631,6 +663,14 @@ echo $cloud;</code></pre>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 
