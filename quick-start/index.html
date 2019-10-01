@@ -247,7 +247,7 @@ values based on the given relative weights of each item in it.</p>
 <h2 id="quick-start">Quick Start</h2>
 <p>This example illustrates how to create a list of tags and spread absolute weight
 values over them.</p>
-<pre class="codehilite"><code class="language-php">// Create the item list
+<p> <pre class=codehilite><code class=language-php>// Create the item list
 $list = new Zend\Tag\ItemList();
 
 // Assign tags to it
@@ -260,14 +260,13 @@ $list-&gt;spreadWeightValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 // Output the items with their absolute values
 foreach ($list as $item) {
-    printf("%s: %d\n", $item-&gt;getTitle(), $item-&gt;getParam('weightValue'));
-}</code></pre>
-
+    printf(&quot;%s: %d\n&quot;, $item-&gt;getTitle(), $item-&gt;getParam('weightValue'));
+}</code></pre></p>
 <p>This will output the three items "Code", "Zend Framework", and "PHP", with the
 absolute values 10, 1 and 2:</p>
-<pre class="codehilite"><code>Code: 10
+<p> <pre class=codehilite><code>Code: 10
 Zend Framework: 1
-PHP: 2</code></pre>
+PHP: 2</code></pre></p>
 
 
 
@@ -301,7 +300,7 @@ PHP: 2</code></pre>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-tag/edit/master/docs/quick-start.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-tag/edit/master/docs/book/quick-start.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
