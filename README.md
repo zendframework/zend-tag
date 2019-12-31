@@ -1,5 +1,9 @@
 # zend-tag
 
+> ## Repository abandoned 2019-12-31
+>
+> This repository has moved to laminas/laminas-tag.
+
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-tag.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-tag)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-tag/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-tag?branch=master)
 
