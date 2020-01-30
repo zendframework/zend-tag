@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zend\Tag">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-tag/tag-cloud/">
+    <link rel="canonical" href="https://docs.zendframework.com/tag-cloud/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Tag Clouds - zend-tag - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -174,9 +174,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-tag/">laminas/laminas-tag.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -276,7 +276,7 @@ via a configuration sturcture (either an array or an instance of <code>Traversab
 <h2 id="using-zend92tag92cloud">Using Zend\Tag\Cloud</h2>
 <p>This example illustrates a basic example of how to create a tag cloud, add
 multiple tags to it, and finally render it.</p>
-<p> <pre class=codehilite><code class=language-php>// Create the cloud and assign static tags to it
+<pre><code class="language-php">// Create the cloud and assign static tags to it
 $cloud = new Zend\Tag\Cloud([
     'tags' =&gt; [
         [
@@ -298,10 +298,12 @@ $cloud = new Zend\Tag\Cloud([
 ]);
 
 // Render the cloud
-echo $cloud;</code></pre></p>
+echo $cloud;
+</code></pre>
+
 <p>This will output the tag cloud with the three tags, spread with the default
 font-sizes:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
+<pre><code class="language-php">&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
     &lt;li&gt;
         &lt;a href=&quot;/tag/code&quot; style=&quot;font-size: 20px;&quot;&gt;
             Code
@@ -317,7 +319,9 @@ font-sizes:</p>
             PHP
         &lt;/a&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre></p>
+&lt;/ul&gt;
+</code></pre>
+
 <blockquote>
 <h3>Formatting</h3>
 <p>The HTML code examples are preformatted for a better visualization in the
@@ -325,7 +329,7 @@ documentation.  You can define a output separator for the <a href="#html-cloud-d
 decorator</a>.</p>
 </blockquote>
 <p>The following example shows how create the <strong>same</strong> tag cloud from a <code>Zend\Config\Config</code> object.</p>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><ul class="nav nav-tabs"><li class="nav-item active"><a href=#tab-group-2-0_ini role=tab data-toggle=tab data-lang=ini>Ini</a></li><li class="nav-item "><a href=#tab-group-2-1_php role=tab data-toggle=tab data-lang=php>Php</a></li></ul><div class=tab-content><div id=tab-group-2-0_ini class="tab-pane active" role=tabpanel><pre class=codehilite><code class=language-ini>; An example tags.ini file
+<pre><code class="language-ini">; An example tags.ini file
 tags.1.title = &quot;Code&quot;
 tags.1.weight = 50
 tags.1.params.url = &quot;/tag/code&quot;
@@ -334,12 +338,16 @@ tags.2.weight = 1
 tags.2.params.url = &quot;/tag/zend-framework&quot;
 tags.3.title = &quot;PHP&quot;
 tags.3.weight = 2
-tags.3.params.url = &quot;/tag/php&quot;</code></pre></div><div id=tab-group-2-1_php class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-php>// Create the cloud from a Zend\Config\Config object
+tags.3.params.url = &quot;/tag/php&quot;
+</code></pre>
+
+<pre><code class="language-php">// Create the cloud from a Zend\Config\Config object
 $config = Zend\Config\Factory::fromFile('tags.ini');
 $cloud = new Zend\Tag\Cloud($config);
 
 // Render the cloud
-echo $cloud;</code></pre></div></div></div>
+echo $cloud;
+</code></pre>
 
 <h2 id="decorators">Decorators</h2>
 <p><code>Zend\Tag\Cloud</code> requires two types of decorators to be able to render a tag cloud:</p>
@@ -401,7 +409,7 @@ the corresponding one will automatically be enabled.</p>
 </tbody>
 </table></div>
 <p>The following example shows how to create a tag cloud with a customized HTML tag decorator.</p>
-<p> <pre class=codehilite><code class=language-php>$cloud = new Zend\Tag\Cloud([
+<pre><code class="language-php">$cloud = new Zend\Tag\Cloud([
     'tagDecorator' =&gt; [
         'decorator' =&gt; 'htmltag',
         'options'   =&gt; [
@@ -432,9 +440,11 @@ the corresponding one will automatically be enabled.</p>
 ]);
 
 // Render the cloud
-echo $cloud;</code></pre></p>
+echo $cloud;
+</code></pre>
+
 <p>The output:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
+<pre><code class="language-php">&lt;ul class=&quot;zend-tag-cloud&quot;&gt;
     &lt;li class=&quot;my_custom_class&quot;&gt;
         &lt;a href=&quot;/tag/code&quot; style=&quot;font-size: 50px;&quot;&gt;Code&lt;/a&gt;
     &lt;/li&gt;
@@ -444,7 +454,9 @@ echo $cloud;</code></pre></p>
     &lt;li class=&quot;my_custom_class&quot;&gt;
         &lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 23px;&quot;&gt;PHP&lt;/a&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre></p>
+&lt;/ul&gt;
+</code></pre>
+
 <h3>HTML Cloud decorator</h3>
 <p>By default, the HTML cloud decorator will surround the HTML tags with a <code>&lt;ul&gt;</code>
 element and add no separation. Like the tag decorator, you can define multiple
@@ -471,7 +483,7 @@ are:</p>
 </tr>
 </tbody>
 </table></div>
-<p> <pre class=codehilite><code class=language-php>// Create the cloud and assign static tags to it
+<pre><code class="language-php">// Create the cloud and assign static tags to it
 $cloud = new Zend\Tag\Cloud([
     'cloudDecorator' =&gt; [
         'decorator' =&gt; 'htmlcloud',
@@ -505,14 +517,17 @@ $cloud = new Zend\Tag\Cloud([
 ]);
 
 // Render the cloud
-echo $cloud;</code></pre></p>
+echo $cloud;
+</code></pre>
+
 <p>The output:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;ul class=&quot;my_custom_class&quot; id=&quot;tag-cloud&quot;&gt;&lt;li&gt;&lt;a href=&quot;/tag/code&quot; style=&quot;font-size:
+<pre><code class="language-php">&lt;ul class=&quot;my_custom_class&quot; id=&quot;tag-cloud&quot;&gt;&lt;li&gt;&lt;a href=&quot;/tag/code&quot; style=&quot;font-size:
 20px;&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;a href=&quot;/tag/zend-framework&quot; style=&quot;font-size: 10px;&quot;&gt;Zend Framework&lt;/a&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 11px;&quot;&gt;PHP&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</code></pre></p>
+&lt;li&gt;&lt;a href=&quot;/tag/php&quot; style=&quot;font-size: 11px;&quot;&gt;PHP&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+</code></pre>
 
 
 
@@ -649,7 +664,7 @@ echo $cloud;</code></pre></p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -657,10 +672,10 @@ echo $cloud;</code></pre></p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -668,27 +683,28 @@ echo $cloud;</code></pre></p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-tag';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
